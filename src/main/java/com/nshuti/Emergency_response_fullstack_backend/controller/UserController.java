@@ -4,6 +4,8 @@ import com.nshuti.Emergency_response_fullstack_backend.exception.UserNotFoundExc
 import com.nshuti.Emergency_response_fullstack_backend.model.User;
 import com.nshuti.Emergency_response_fullstack_backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -51,6 +53,11 @@ public class UserController {
         }
         userRepository.deleteById(userId);
         return "User with id "+userId+" has been deleted successfully";
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleException(Exception exception){
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
     }
 
 }
