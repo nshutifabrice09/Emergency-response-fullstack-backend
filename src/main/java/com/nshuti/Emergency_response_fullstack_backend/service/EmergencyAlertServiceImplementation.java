@@ -1,6 +1,8 @@
 package com.nshuti.Emergency_response_fullstack_backend.service;
 
 import com.nshuti.Emergency_response_fullstack_backend.model.EmergencyAlert;
+import com.nshuti.Emergency_response_fullstack_backend.model.Responder;
+import com.nshuti.Emergency_response_fullstack_backend.model.User;
 import com.nshuti.Emergency_response_fullstack_backend.repository.EmergencyAlertRepository;
 import com.nshuti.Emergency_response_fullstack_backend.repository.ResponderRepository;
 import com.nshuti.Emergency_response_fullstack_backend.repository.UserRepository;
@@ -25,7 +27,11 @@ public class EmergencyAlertServiceImplementation implements EmergencyAlertServic
 
     @Override
     public EmergencyAlert saveAlert(EmergencyAlert emergencyAlert, Long userId, Long responderId) {
-        return null;
+        User user = userRepository.findUserById(userId);
+        Responder responder = responderRepository.findResponderById(responderId);
+        emergencyAlert.setUser(user);
+        emergencyAlert.setAssignedResponder(responder);
+        return emergencyAlertRepository.save(emergencyAlert);
     }
 
     @Override

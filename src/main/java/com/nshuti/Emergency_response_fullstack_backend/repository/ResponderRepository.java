@@ -9,4 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ResponderRepository extends JpaRepository <Responder, Long> {
+    Responder findResponderById(Long responderId);
 }

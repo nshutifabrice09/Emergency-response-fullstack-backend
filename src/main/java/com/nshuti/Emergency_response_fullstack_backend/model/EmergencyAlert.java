@@ -11,7 +11,7 @@ public class EmergencyAlert {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
+    @JoinColumn(name = "userId")
     private User user;
 
     private String type;
