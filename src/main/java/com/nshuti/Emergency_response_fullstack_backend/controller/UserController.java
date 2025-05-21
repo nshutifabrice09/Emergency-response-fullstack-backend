@@ -5,6 +5,8 @@ import com.nshuti.Emergency_response_fullstack_backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin("http://localhost:3000")
 public class UserController {
@@ -19,5 +21,15 @@ public class UserController {
     @PostMapping("user")
     public User saveUser(@RequestBody User user){
         return userService.saveUser(user);
+    }
+
+    @GetMapping("/users")
+    public List<User> userList(){
+        return userService.getAllUsers();
+    }
+
+    @GetMapping("/user/{id}")
+    public User getUser(@PathVariable ("id") Long id){
+        return userService.getUserById(id);
     }
 }
