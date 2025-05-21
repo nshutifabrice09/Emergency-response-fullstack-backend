@@ -8,15 +8,7 @@ import java.util.Set;
 
 @Service
 public class UserServiceImplementation implements UserService{
-    @Override
-    public List<User> getAllUsers() {
-        return null;
-    }
 
-    @Override
-    public User getUserById(Long userId) {
-        return null;
-    }
 
     @Override
     public User saveUser(User user) {
@@ -24,17 +16,22 @@ public class UserServiceImplementation implements UserService{
     }
 
     @Override
-    public User updateUser(Long userId, User user) {
+    public List<User> getAllUsers() {
         return null;
     }
 
     @Override
-    public void removeById(Long userId) {
-
+    public User getUserById(Long id) {
+        return null;
     }
 
     @Override
-    public <E> void saveUser(String username, String password, Set<E> role_user) {
+    public User updateUser(Long id, User user) {
+        return null;
+    }
+
+    @Override
+    public void removeById(Long id) {
 
     }
 }
