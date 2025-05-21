@@ -23,7 +23,7 @@ public class ResponderServiceImplementation implements ResponderService{
     }
 
     @Override
-    public List<Responder> getAllResponder() {
+    public List<Responder> getAllResponders() {
         return responderRepository.findAll();
     }
 

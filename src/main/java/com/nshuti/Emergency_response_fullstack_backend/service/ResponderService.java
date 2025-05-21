@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ResponderService {
     Responder saveResponder (Responder responder);
-    List<Responder> getAllResponder ();
+    List<Responder> getAllResponders ();
     Responder getById (Long id);
     Responder updateById (Long id, Responder responder);
     void removeById (Long id);
