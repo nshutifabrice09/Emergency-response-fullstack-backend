@@ -28,7 +28,7 @@ public class ResponderServiceImplementation implements ResponderService{
     }
 
     @Override
-    public Responder getById(Long id) {
+    public Responder getResponderById(Long id) {
         return responderRepository.findResponderById(id);
     }
 

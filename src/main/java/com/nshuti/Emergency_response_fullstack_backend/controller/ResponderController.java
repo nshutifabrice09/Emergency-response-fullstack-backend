@@ -27,4 +27,9 @@ public class ResponderController {
     public List<Responder> responderList(){
         return responderService.getAllResponders();
     }
+
+    @GetMapping("/responder/{id}")
+    public Responder getResponder(@PathVariable ("id") Long id){
+        return responderService.getResponderById(id);
+    }
 }
