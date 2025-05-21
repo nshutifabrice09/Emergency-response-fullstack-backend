@@ -18,7 +18,7 @@ public class EmergencyAlertServiceImplementation implements EmergencyAlertServic
     }
 
     @Override
-    public EmergencyAlert saveAlert(EmergencyAlert emergencyAlert) {
+    public EmergencyAlert saveAlert(EmergencyAlert emergencyAlert, Long userId, Long responderId) {
         return null;
     }
 
