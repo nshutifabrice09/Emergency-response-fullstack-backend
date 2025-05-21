@@ -7,6 +7,7 @@ import java.util.List;
 
 @Service
 public class ResponderServiceImplementation implements ResponderService{
+
     @Override
     public Responder saveResponder(Responder responder) {
         return null;
@@ -18,17 +19,17 @@ public class ResponderServiceImplementation implements ResponderService{
     }
 
     @Override
-    public Responder findById(Long responderId) {
+    public Responder findById(Long id) {
         return null;
     }
 
     @Override
-    public Responder updateById(Long responderId, Responder responder) {
+    public Responder updateById(Long id, Responder responder) {
         return null;
     }
 
     @Override
-    public void removeById(Long responderId) {
+    public void removeById(Long id) {
 
     }
 }
