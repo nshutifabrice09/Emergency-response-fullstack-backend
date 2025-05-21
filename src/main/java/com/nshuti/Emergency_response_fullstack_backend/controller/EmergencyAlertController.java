@@ -1,9 +1,8 @@
 package com.nshuti.Emergency_response_fullstack_backend.controller;
 
-import com.nshuti.Emergency_response_fullstack_backend.exception.EmergencyAlertNotFoundAdvice;
 import com.nshuti.Emergency_response_fullstack_backend.exception.EmergencyAlertNotFoundException;
 import com.nshuti.Emergency_response_fullstack_backend.model.EmergencyAlert;
-import com.nshuti.Emergency_response_fullstack_backend.repository.EmergencyAlertRepository;
+import com.nshuti.Emergency_response_fullstack_backend.service.EmergencyAlertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,39 +12,19 @@ import java.util.List;
 @RequestMapping("/alters")
 public class EmergencyAlertController {
 
+    private final EmergencyAlertService emergencyAlertService;
+
     @Autowired
-    private EmergencyAlertRepository emergencyAlertRepository;
-
-    @PostMapping("/register/alert")
-    EmergencyAlert newAlert(@RequestBody EmergencyAlert newAlert){
-        return emergencyAlertRepository.save(newAlert);
+    public EmergencyAlertController(EmergencyAlertService emergencyAlertService) {
+        this.emergencyAlertService = emergencyAlertService;
     }
 
-    @GetMapping("/list/alerts")
-    List<EmergencyAlert> getAllAlerts(){
-        return emergencyAlertRepository.findAll();
+    @PostMapping("/emergencyAlert/{userId}/{responderId}")
+    public EmergencyAlert save(@RequestBody EmergencyAlert emergencyAlert,
+                               @PathVariable ("userId") Long userId,
+                               @PathVariable ("responderId") Long responderId){
+        return emergencyAlertService.saveAlert(emergencyAlert, userId, responderId);
     }
 
-    @GetMapping("/find/alerts/{id}")
-    EmergencyAlert updateAlert (@RequestBody EmergencyAlert newAlert, @PathVariable Long id){
-        return emergencyAlertRepository.findById(id)
-                .map(emergencyAlert -> {
-                    emergencyAlert.setUser(newAlert.getUser());
-                    emergencyAlert.setType(newAlert.getType());
-                    emergencyAlert.setStatus(newAlert.getStatus());
-                    emergencyAlert.setLatitude(newAlert.getLatitude());
-                    emergencyAlert.setLongitude(newAlert.getLongitude());
-                    emergencyAlert.setAssignedResponder(newAlert.getAssignedResponder());
-                    return emergencyAlertRepository.save(emergencyAlert);
-                }).orElseThrow(()-> new EmergencyAlertNotFoundException(id));
-    }
 
-    @DeleteMapping("/delete/alerts/{id}")
-    String deleteUser (@PathVariable Long id){
-        if(!emergencyAlertRepository.existsById(id)){
-            throw new EmergencyAlertNotFoundException(id);
-        }
-        emergencyAlertRepository.deleteById(id);
-        return "User with id "+id+" has been deleted successfully";
-    }
 }
