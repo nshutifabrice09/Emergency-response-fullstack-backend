@@ -29,16 +29,26 @@ public class ResponderServiceImplementation implements ResponderService{
 
     @Override
     public Responder getById(Long id) {
-        return ;
+        return responderRepository.findResponderById(id);
     }
 
     @Override
     public Responder updateById(Long id, Responder responder) {
+        Responder existResponder = responderRepository.findResponderById(id);
+        if(existResponder != null){
+            existResponder.setName(responder.getName());
+            existResponder.setPhone(responder.getPhone());
+            existResponder.setType(responder.getType());
+            existResponder.setLatitude(responder.getLatitude());
+            existResponder.setLongitude(responder.getLongitude());
+            existResponder.setAvailable(responder.isAvailable());
+            return responderRepository.save(existResponder);
+        }
         return null;
     }
 
     @Override
     public void removeById(Long id) {
-
+        responderRepository.deleteById(id);
     }
 }
