@@ -1,6 +1,8 @@
 package com.nshuti.Emergency_response_fullstack_backend.service;
 
 import com.nshuti.Emergency_response_fullstack_backend.model.EmergencyAlert;
+import com.nshuti.Emergency_response_fullstack_backend.repository.EmergencyAlertRepository;
+import com.nshuti.Emergency_response_fullstack_backend.repository.ResponderRepository;
 import com.nshuti.Emergency_response_fullstack_backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,11 +12,15 @@ import java.util.List;
 @Service
 public class EmergencyAlertServiceImplementation implements EmergencyAlertService{
 
+    private final EmergencyAlertRepository emergencyAlertRepository;
     private final UserRepository userRepository;
+    private final ResponderRepository responderRepository;
 
     @Autowired
-    public EmergencyAlertServiceImplementation(UserRepository userRepository) {
+    public EmergencyAlertServiceImplementation(EmergencyAlertRepository emergencyAlertRepository, UserRepository userRepository, ResponderRepository responderRepository) {
+        this.emergencyAlertRepository = emergencyAlertRepository;
         this.userRepository = userRepository;
+        this.responderRepository = responderRepository;
     }
 
     @Override
