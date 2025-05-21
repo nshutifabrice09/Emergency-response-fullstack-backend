@@ -36,21 +36,29 @@ public class EmergencyAlertServiceImplementation implements EmergencyAlertServic
 
     @Override
     public List<EmergencyAlert> getAllAlerts() {
-        return null;
+        return emergencyAlertRepository.findAll();
     }
 
     @Override
     public EmergencyAlert getAlertById(Long id) {
-        return null;
+        return emergencyAlertRepository.findEmergencyAlertById(id);
     }
 
     @Override
     public EmergencyAlert updateAlert(Long id, EmergencyAlert emergencyAlert) {
+        EmergencyAlert existEmergencyAlert = emergencyAlertRepository.findEmergencyAlertById(id);
+        if(existEmergencyAlert != null){
+            existEmergencyAlert.setType(emergencyAlert.getType());
+            existEmergencyAlert.setStatus(emergencyAlert.getStatus());
+            existEmergencyAlert.setLatitude(emergencyAlert.getLatitude());
+            existEmergencyAlert.setLongitude(emergencyAlert.getLongitude());
+            return emergencyAlertRepository.save(existEmergencyAlert);
+        }
         return null;
     }
 
     @Override
     public void deleteById(Long id) {
-
+        emergencyAlertRepository.deleteById(id);
     }
 }

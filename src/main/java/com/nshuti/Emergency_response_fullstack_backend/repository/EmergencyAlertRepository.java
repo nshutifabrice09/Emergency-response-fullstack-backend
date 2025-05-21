@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface EmergencyAlertRepository extends JpaRepository <EmergencyAlert, Long> {
 
+    EmergencyAlert findEmergencyAlertById(Long id);
 }
