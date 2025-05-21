@@ -26,5 +26,23 @@ public class EmergencyAlertController {
         return emergencyAlertService.saveAlert(emergencyAlert, userId, responderId);
     }
 
+    @GetMapping("/emergencyAlerts")
+    public List<EmergencyAlert> emergencyAlertList(){
+        return emergencyAlertService.getAllAlerts();
+    }
 
+    @GetMapping("/emergencyAlert/{id}")
+    public EmergencyAlert getEmergencyAlert(@PathVariable ("id") Long id){
+        return emergencyAlertService.getAlertById(id);
+    }
+
+    @PutMapping("/update/emergencyAlert/{id}")
+    public EmergencyAlert updateEmergencyAlert(@PathVariable ("id") Long id, @RequestBody EmergencyAlert emergencyAlert){
+        return emergencyAlertService.updateAlert(id, emergencyAlert);
+    }
+
+    @DeleteMapping("/delete/emergencyAlert/{id}")
+    public void remove(@PathVariable ("id") Long id){
+        emergencyAlertService.deleteById(id);
+    }
 }
