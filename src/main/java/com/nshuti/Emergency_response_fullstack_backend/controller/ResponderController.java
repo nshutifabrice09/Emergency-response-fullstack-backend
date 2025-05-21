@@ -32,4 +32,14 @@ public class ResponderController {
     public Responder getResponder(@PathVariable ("id") Long id){
         return responderService.getResponderById(id);
     }
+
+    @PutMapping("/update/responder/{id}")
+    public Responder updateResponder(@PathVariable ("id") Long id, @RequestBody Responder responder){
+        return responderService.updateById(id, responder);
+    }
+
+    @DeleteMapping("/delete/responder/{id}")
+    public void removeResponder(@PathVariable ("id") Long id){
+        responderService.removeById(id);
+    }
 }
