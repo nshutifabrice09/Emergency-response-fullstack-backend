@@ -42,7 +42,7 @@ public class NotificationServiceImplementation implements NotificationService{
 
     @Override
     public Notification getNotificationById(Long id) {
-        return null;
+        return notificationRepository.findNotificationById(id);
     }
 
     @Override
@@ -52,8 +52,6 @@ public class NotificationServiceImplementation implements NotificationService{
 
     @Override
     public void removeById(Long id) {
-
+        notificationRepository.deleteById(id);
     }
-
-
 }
