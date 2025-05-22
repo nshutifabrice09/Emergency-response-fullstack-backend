@@ -41,17 +41,19 @@ public class NotificationServiceImplementation implements NotificationService{
     }
 
     @Override
-    public Notification getNotificationById(Long notificationId) {
+    public Notification getNotificationById(Long id) {
         return null;
     }
 
     @Override
-    public Notification updateNotification(Long notificationId, Notification notification) {
+    public Notification updateNotification(Long id, Notification notification) {
         return null;
     }
 
     @Override
-    public void removeById(Long notificationId) {
+    public void removeById(Long id) {
 
     }
+
+
 }
