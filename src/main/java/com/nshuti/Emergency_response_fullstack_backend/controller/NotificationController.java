@@ -5,6 +5,8 @@ import com.nshuti.Emergency_response_fullstack_backend.service.NotificationServi
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class NotificationController {
 
@@ -20,6 +22,15 @@ public class NotificationController {
                              @PathVariable ("responderId") Long responderId,
                              @PathVariable ("alertId") Long alertId){
         return notificationService.saveNotification(notification, responderId, alertId);
+    }
+
+    @GetMapping("/notifications")
+    public List<Notification> notificationList(){
+        return notificationService.getAllNotifications();
+    }
+    @GetMapping("/notification/{id}")
+    public Notification getNotification(@PathVariable ("id") Long id){
+        return notificationService.getNotificationById(id);
     }
 
 }
