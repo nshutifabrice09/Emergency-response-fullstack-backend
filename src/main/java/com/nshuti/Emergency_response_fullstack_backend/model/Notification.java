@@ -29,7 +29,5 @@ public class Notification {
     private String status;
     private LocalDateTime sentAt;
 
-    public Notification() {
-    }
 
 }
