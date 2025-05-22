@@ -47,6 +47,12 @@ public class NotificationServiceImplementation implements NotificationService{
 
     @Override
     public Notification updateNotification(Long id, Notification notification) {
+        Notification existNotification = notificationRepository.findNotificationById(id);
+        if(existNotification != null){
+            existNotification.setStatus(notification.getStatus());
+            existNotification.setSentAt(notification.getSentAt());
+            return notificationRepository.save(existNotification);
+        }
         return null;
     }
 
