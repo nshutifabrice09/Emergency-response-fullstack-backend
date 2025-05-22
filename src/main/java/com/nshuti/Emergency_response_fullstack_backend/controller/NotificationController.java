@@ -33,4 +33,14 @@ public class NotificationController {
         return notificationService.getNotificationById(id);
     }
 
+    @PutMapping("/update/notification/{id}")
+    private Notification updateNotification(@PathVariable ("id") Long id, @RequestBody Notification notification){
+        return notificationService.updateNotification(id, notification);
+    }
+
+    @DeleteMapping("/delete/notification/{id}")
+    private void removeNotification(@PathVariable ("id") Long id){
+        notificationService.removeById(id);
+    }
+
 }
