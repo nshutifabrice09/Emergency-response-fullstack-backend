@@ -7,28 +7,5 @@ import java.util.List;
 
 @Service
 public class NotificationServiceImplementation implements NotificationService{
-    @Override
-    public Notification saveNotification(Notification notification) {
-        return null;
-    }
-
-    @Override
-    public List<Notification> getAllNotifications() {
-        return null;
-    }
-
-    @Override
-    public Notification findById(Long notificationId) {
-        return null;
-    }
-
-    @Override
-    public Notification updateNotification(Long notificationId, Notification notification) {
-        return null;
-    }
-
-    @Override
-    public void removeById(Long notificationId) {
-
-    }
+    
 }
